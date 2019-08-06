@@ -17,7 +17,6 @@ services:
     command: -f /etc/logstash/conf.d/
     volumes:
       - ./logstash/config:/etc/logstash/conf.d
-      - f:\logs:/logs
     ports:
       - "5000:5000"
       - "5044:5044"
@@ -43,7 +42,7 @@ services:
     build: filebeat/
     volumes:
       - ./filebeat/config:/etc/filebeat
-      - f:\logs:/logs
+      - /tmp/logs:/logs
     networks:
       - docker_elk
     depends_on:
